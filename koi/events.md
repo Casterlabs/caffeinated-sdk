@@ -27,28 +27,24 @@ This page outlines some examples of the koi event format and any modifications m
   
 ## `EventType`
 All event types.  
-<details>
-  <summary>Click to expand!</summary>
-  
-  ```javascript
-  enum KoiEventType {
-    CHAT,
-    DONATION,
-    META,
-    CHANNEL_POINTS,
-    FOLLOW,
-    SUBSCRIPTION,
-    RAID,
-    USER_UPDATE,
-    STREAM_STATUS,
-    VIEWER_JOIN,
-    VIEWER_LEAVE,
-    VIEWER_LIST,
-    CATCHUP,
-    CLEARCHAT
-  }
-  ```
-</details>
+```javascript
+enum KoiEventType {
+  CHAT,
+  DONATION,
+  META,
+  CHANNEL_POINTS,
+  FOLLOW,
+  SUBSCRIPTION,
+  RAID,
+  USER_UPDATE,
+  STREAM_STATUS,
+  VIEWER_JOIN,
+  VIEWER_LEAVE,
+  VIEWER_LIST,
+  CATCHUP,
+  CLEARCHAT
+}
+```
 
 ## `User`
 Represents a user/channel account.  
