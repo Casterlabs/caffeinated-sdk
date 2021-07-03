@@ -1,8 +1,13 @@
+---
+layout: default
+parent: Koi
+---
+
 # Koi Event Formats
   
 This page outlines some examples of the koi event format and any modifications made by Caffeinated.  
   
-  
+
 ## TODO, Document these:  
  - [ ] CHAT  
  - [ ] DONATION  

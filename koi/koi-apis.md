@@ -1,3 +1,8 @@
+---
+layout: default
+parent: Koi
+---
+
 # Koi Apis
   
 ## `koi.addEventListener(eventType: string, callback: Function);`  
