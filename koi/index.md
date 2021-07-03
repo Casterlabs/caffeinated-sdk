@@ -9,5 +9,5 @@ has_children: true
 Koi is the backend server program that allows Casterlabs to remain consistent across all streaming platforms.  
   
     
-[Koi Apis](#)  
-[Event Formats](#)  
+[Koi Apis](/caffeinated-sdk/koi/apis)  
+[Event Formats](/caffeinated-sdk/koi/events)  
