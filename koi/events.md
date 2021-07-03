@@ -52,73 +52,65 @@ All event types.
 
 ## `User`
 Represents a user/channel account.  
-<details>
-  <summary>Click to expand!</summary>
-  
-  ```javascript
-  interface KoiUser {
-    id: string, // The user id.
-    UPID: string, // Unique platform id, this allows for unique identification of users incase any platform use the same ID system.
-    username: string, // The user's username, on Twitch this is the login name. Always lowercase.
-    displayname: string, // The user displayname, this is the preferred casing of the username. On Twitch this can also be a localized version instead: https://blog.twitch.tv/en/2016/08/22/localized-display-names-e00ee8d3250a/
-    platform: UserPlatform,
-    image_link: string, // The user/channel profile image.
-    color: string, // The user's preferred chat color. This is a hex color (#ffffff)
+```javascript
+interface KoiUser {
+  id: string, // The user id.
+  UPID: string, // Unique platform id, this allows for unique identification of users incase any platform use the same ID system.
+  username: string, // The user's username, on Twitch this is the login name. Always lowercase.
+  displayname: string, // The user displayname, this is the preferred casing of the username. On Twitch this can also be a localized version instead: https://blog.twitch.tv/en/2016/08/22/localized-display-names-e00ee8d3250a/
+  platform: UserPlatform,
+  image_link: string, // The user/channel profile image.
+  color: string, // The user's preferred chat color. This is a hex color (#ffffff)
 
-    link: string, // A link that will take you to the channel OR profile page of a user.
+  link: string, // A link that will take you to the channel OR profile page of a user.
 
-    roles: KoiUserRoles[],
-    badges: string[], // This is an array of image links.
+  roles: KoiUserRoles[],
+  badges: string[], // This is an array of image links.
 
-    channel_id: string, // The channel id, not present for viewers. This is sometimes the same as the user id, platform dependent.
-    bio: string, // The channel bio, not present for viewers.
-    followers_count: number, // Not present for viewers.
-    subscriber_count: number // Not present for viewers.
-  }
-  ```
+  channel_id: string, // The channel id, not present for viewers. This is sometimes the same as the user id, platform dependent.
+  bio: string, // The channel bio, not present for viewers.
+  followers_count: number, // Not present for viewers.
+  subscriber_count: number // Not present for viewers.
+}
+```
 
-  ```javascript
-  enum KoiUserPlatform {
-    CAFFEINE,
-    TWITCH,
-    TROVO,
-    GLIMESH,
-    BRIME,
-    CASTERLABS_SYSTEM // Used by test events.
-  }
-  ```
+```javascript
+enum KoiUserPlatform {
+  CAFFEINE,
+  TWITCH,
+  TROVO,
+  GLIMESH,
+  BRIME,
+  CASTERLABS_SYSTEM // Used by test events.
+}
+```
 
-  ```javascript
-  enum KoiUserRoles {
-    BROADCASTER,
-    SUBSCRIBER,
-    FOLLOWER,
-    MODERATOR,
-    STAFF
-  }
-  ```
-</details>
+```javascript
+enum KoiUserRoles {
+  BROADCASTER,
+  SUBSCRIBER,
+  FOLLOWER,
+  MODERATOR,
+  STAFF
+}
+```
 
 ## `Event`
 The base interface for all events.  
-<details>
-  <summary>Click to expand!</summary>
-  
-  ```javascript
-  interface KoiEvent {
-    isTest: boolean, // Added by Caffeinated.
+```javascript
+interface KoiEvent {
+  isTest: boolean, // Added by Caffeinated.
 
-    streamer: KoiUser, // Tied to the signed in account, always present.
+  streamer: KoiUser, // Tied to the signed in account, always present.
 
-    event_type: KoiEventType,
-    event_abilities: KoiEventAbilities
-  }
-  ```
+  event_type: KoiEventType,
+  event_abilities: KoiEventAbilities
+}
+```
 
-  ```javascript
-  interface KoiEventAbilities {
-    upvotable: boolean, // Let's you know if an event can be updated, refer to koi.upvote for more information.
-    deletable: boolean  // Let's you know if an event can be deleted, refer to koi.deleteMessage for more information.
-  }
-  ```
-</details>
+```javascript
+interface KoiEventAbilities {
+  upvotable: boolean, // Let's you know if an event can be updated, refer to koi.upvote for more information.
+  deletable: boolean  // Let's you know if an event can be deleted, refer to koi.deleteMessage for more information.
+}
+```
