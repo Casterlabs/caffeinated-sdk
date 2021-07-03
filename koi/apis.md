@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Koi Apis
 parent: Koi
 ---

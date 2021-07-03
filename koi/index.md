@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Koi
 nav_order: 2
 has_children: true

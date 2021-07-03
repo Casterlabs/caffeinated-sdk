@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Koi Events
 parent: Koi
 ---
