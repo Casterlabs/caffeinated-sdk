@@ -1,6 +1,7 @@
 # Koi
 
-Koi is our backend server that allows for cross-platform (stream platform that is) widget development. 
+Koi is the backend server program that allows Casterlabs to remain consistent across all streaming platforms.  
   
-[Caffeinated Apis](#)  
-[Event Format](#)  
+    
+[Koi Apis](#)  
+[Event Formats](#)  
