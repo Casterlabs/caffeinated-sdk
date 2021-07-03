@@ -4,12 +4,12 @@ Caffeinated is a desktop app for stream widgets.
   
   
 ## Exposed Apis
-[Koi](#)
-~~[Caffeinated](#)~~
-~~[Modules](#)~~
-~~[Localization](#)~~
-~~[Docks](#)~~
-~~[Widgets](#)~~
+[Koi](#)  
+~~[Caffeinated](#)~~  
+~~[Modules](#)~~  
+~~[Localization](#)~~  
+~~[Docks](#)~~  
+~~[Widgets](#)~~  
   
 ## Examples
-~~[Example 1](#)~~
+~~[Example 1](#)~~  
