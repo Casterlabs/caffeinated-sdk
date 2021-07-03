@@ -30,7 +30,7 @@ All event types.
 <details>
   <summary>Click to expand!</summary>
   
-  ```js
+  ```javascript
   enum KoiEventType {
     CHAT,
     DONATION,
@@ -55,7 +55,7 @@ Represents a user/channel account.
 <details>
   <summary>Click to expand!</summary>
   
-  ```js
+  ```javascript
   interface KoiUser {
     id: string, // The user id.
     UPID: string, // Unique platform id, this allows for unique identification of users incase any platform use the same ID system.
@@ -75,7 +75,9 @@ Represents a user/channel account.
     followers_count: number, // Not present for viewers.
     subscriber_count: number // Not present for viewers.
   }
+  ```
 
+  ```javascript
   enum KoiUserPlatform {
     CAFFEINE,
     TWITCH,
@@ -84,7 +86,9 @@ Represents a user/channel account.
     BRIME,
     CASTERLABS_SYSTEM // Used by test events.
   }
+  ```
 
+  ```javascript
   enum KoiUserRoles {
     BROADCASTER,
     SUBSCRIBER,
@@ -100,7 +104,7 @@ The base interface for all events.
 <details>
   <summary>Click to expand!</summary>
   
-  ```js
+  ```javascript
   interface KoiEvent {
     isTest: boolean, // Added by Caffeinated.
 
@@ -109,7 +113,9 @@ The base interface for all events.
     event_type: KoiEventType,
     event_abilities: KoiEventAbilities
   }
-  
+  ```
+
+  ```javascript
   interface KoiEventAbilities {
     upvotable: boolean, // Let's you know if an event can be updated, refer to koi.upvote for more information.
     deletable: boolean  // Let's you know if an event can be deleted, refer to koi.deleteMessage for more information.
