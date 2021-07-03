@@ -1,7 +1,7 @@
 title: caffeinated-sdk
 description: A Jekyll theme for documentation
 baseurl: "/caffeinated-sdk" # the subpath of your site, e.g. /blog
-url: "https://casterlabs.github.io/caffeinated-sdk" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://casterlabs.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 remote_theme: pmarsceill/just-the-docs # Import the theme.
 
@@ -50,7 +50,7 @@ aux_links_new_tab: true
 
 # Sort order for navigation links
 # nav_sort: case_insensitive # default, equivalent to nil
-nav_sort: case_insensitive # Capital letters sorted before lowercase
+nav_sort: case_sensitive # Capital letters sorted before lowercase
 
 # Footer content
 # appears at the bottom of every page's main content
