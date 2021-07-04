@@ -12,10 +12,12 @@ These docs are targeted for an unreleased beta version of Caffeinated, they will
 ## Exposed Apis
 [Koi](/caffeinated-sdk/koi)  
 ~~[Caffeinated](#)~~  
-~~[Modules](#)~~  
+~~[Module](#)~~  
 ~~[Localization](#)~~  
+
+## Integration Details
 ~~[Docks](#)~~  
 ~~[Widgets](#)~~  
   
 ## Examples
-~~[Example 1](#)~~  
+[Chat Example: "Hello world"](/caffeinated-sdk/examples/chat-hello-world)  
