@@ -8,63 +8,82 @@ parent: Examples
 module.js:
 ```javascript
 
-// Render out a settings page.
-// Keep in mind that adding settings display will forcibly trigger a settings_update module event.
-Module.settingsDisplay = {
-    command: {
-        type: "text",
-        defaultValue: "!hello"
-    },
-    sendMessageBtn: {
-        type: "button",
-        label: "Send Message",
-        onclick() {
-            Koi.sendMessage("Hello world!", null, "PUPPET");
-        }
-    }
-};
+// Register our class to the module system.
+MODULES.uniqueModuleClasses["chat_hello_world"] = class {
 
-Module.on("settings_update", (newSettings) => {
-    // Validate that the command starts with an exclaimation mark.
-    if (!newSettings.command.startsWith("!")) {
-        // Show an error dialog.
-        alert("Command must start with an exclaimation mark (!).");
-        return; // Reject the settings.
+    // Init the module.
+    constructor(id) {
+        this.namespace = "chat_hello_world";
+        this.displayname = "Chat Hello World";
+        this.type = "settings";
+        this.id = id;
+        this.persist = true;
     }
 
-    // The new settings passed validation, so we save.
-    Module.settings = newSettings;
-    Module.save();
-});
+    getDataToStore() {
+        return this.settings;
+    }
 
-// Listen for the command...
-Koi.on("chat", (event) => {
-    if (event.message === Module.settings.command) {
+    init() {
+        koi.addEventListener("chat", (event) => {
+            if (event.message === this.settings.command) {
+                this.sendMessage();
+            }
+        });
+    }
+
+    sendMessage() {
         // We use PUPPET to indicate that we prefer the chatbot account over the streamer's account.
-        Koi.sendMessage("Hello world!", event, "PUPPET");
+        koi.sendMessage("Hello world!", null, "PUPPET");
     }
-});
+
+    settingsDisplay = {
+        command: {
+            display: "Chat Command",
+            type: "text"
+        },
+        sendMessageBtn: {
+            display: "Send Message",
+            type: "button"
+        }
+    };
+
+    defaultSettings = {
+        command: "!hello",
+        sendMessageBtn: () => {
+            this.sendMessage();
+        }
+    };
+
+};
 
 ```
   
 modules.json:
 ```json
 {
-    "version": "1.0.0",
-    "name": "Chat Example: \"Hello world\"",
-    "modules": [
-        {
-            "namespace": "caffeinatedsdk_example_chat_hello_world",
-            "src": "module.js",
-            "type": ["settings"]
-        }
+    "supported": [
+        "1.*-*"
     ],
+    "unsupported": [
+        "0.4.*-*",
+        "0.5.*-*"
+    ],
+    "version": "1.0.0",
+    "name": "Caffeinated Hello World Example",
+    "scripts": [
+        "module.js"
+    ],
+    "simple": [],
     "required": [
         {
-            "namespace": "caffeinatedsdk_example_chat_hello_world",
+            "namespace": "chat_hello_world",
             "id": "chat_hello_world"
         }
     ]
 }
 ```
   
+## Result
+![The generated module settings](https://i.imgur.com/jCUN4jP.png)
+![The !hello command in action](https://i.imgur.com/zEs7hee.png)
