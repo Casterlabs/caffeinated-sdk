@@ -1,7 +1,7 @@
 ---
 title: Creating a Widget
 parent: Development
-nav_order: 1
+nav_order: 2
 ---
 
 # Creating a Widget
@@ -78,6 +78,9 @@ You may access the settings by calling `Widget#getSettings()` in your code. The 
   
 
 (More advanced plugins may wish to dynamically update the settings based on the configured settings, this may be done by implementing `Widget#onSettingsUpdate()` and recreating your layout.)  
-  
-  
+
+
+<br>
+<br>
+<br>
 [Click here](/caffeinated-sdk/development/creating-the-widget-source) to continue to the next section, Creating the OBS source for the widget.
