@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Development
 nav_order: 7
 has_children: true
 ---
@@ -67,3 +67,8 @@ public class MyFirstPlugin extends CaffeinatedPlugin {
 ```
 As you can see, the plugin class extends `CaffeinatedPlugin` and implements `onInit()`, `onClose()`, and `getName()`, and `getId()`.  
 `getName()` and `getId()` must return a name and unique id respectively, otherwise the plugin will fail to load.  
+  
+When the plugin loads, you will see a message in the console like this:
+`[INFO  ] [My First Plugin] Hello World!`  
+
+[Click here](/caffeinated-sdk/development/creating-a-widget) to continue to the next section, Creating a Widget.

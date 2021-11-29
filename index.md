@@ -6,4 +6,4 @@ nav_order: 1
 
 Caffeinated is a desktop app for stream widgets.  
   
-[Getting Started](/development)
+[Getting Started](/caffeinated-sdk/development)
