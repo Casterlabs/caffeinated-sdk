@@ -5,6 +5,7 @@ nav_order: 2
 ---
 
 # Creating a Widget
+{: .no_toc }
 
 Widgets are the visible and interactable component displayed on streams, that includes alerts, text labels, and more. Widgets are created by the user and are not created by the plugin directly.
 

@@ -5,6 +5,7 @@ nav_order: 3
 ---
 
 # Creating the Widget Source
+{: .no_toc }
 
 // TODO :^)
 

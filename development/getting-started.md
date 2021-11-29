@@ -1,9 +1,11 @@
 ---
 title: Getting Started
+parent: Development
 nav_order: 1
 ---
 
 # Getting Started
+{: .no_toc }
 
 Caffeinated plugins are coded in Java.  
 

@@ -1,14 +1,10 @@
 ---
-title: Getting Started
+title: Development
 nav_order: 7
-has_toc: false
+has_toc: true
 has_children: true
 ---
 
-{: .no_toc }
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
+# Development
+The development docs for creating your own plugins. See the table of contents below for a list of tutorials.
+{: .fs-6 .fw-300 }
