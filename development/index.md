@@ -1,6 +1,7 @@
 ---
 title: Development
 nav_order: 7
+has_toc: false
 has_children: true
 ---
 
@@ -37,7 +38,7 @@ After creating a maven project, you should modify your `pom.xml` to include the 
 
 ## Plugin Loading
 While the SDK may look similar to Bukkit, it is not the same.  
-Your plugin class will need to be annotated with `@PluginImplementation` to be found and loaded, you can even load multiple plugins in the same jar file.  
+Your plugin class will need to be annotated with `@PluginImplementation` to be found and loaded. (You can have multiple plugins in the same jar file)  
 
 ```java
 @PluginImplementation
@@ -65,10 +66,11 @@ public class MyFirstPlugin extends CaffeinatedPlugin {
 
 }
 ```
-As you can see, the plugin class extends `CaffeinatedPlugin` and implements `onInit()`, `onClose()`, and `getName()`, and `getId()`.  
+As you can see, the plugin class extends `CaffeinatedPlugin` and implements `onInit()`, `onClose()`, `getName()`, and `getId()`.  
 `getName()` and `getId()` must return a name and unique id respectively, otherwise the plugin will fail to load.  
   
 When the plugin loads, you will see a message in the console like this:
 `[INFO  ] [My First Plugin] Hello World!`  
-
+  
+  
 [Click here](/caffeinated-sdk/development/creating-a-widget) to continue to the next section, Creating a Widget.
