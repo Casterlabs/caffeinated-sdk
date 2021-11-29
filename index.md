@@ -2,9 +2,9 @@
 nav_order: 1
 ---
 
-# Welcome to Caffeinated
+# Welcome to the Caffeinated SDK Documentation!
 
-Caffeinated is a desktop app for stream widgets.  
+Caffeinated is a desktop app by Casterlabs for stream widgets, alerts, and more.  
 <br>
 <br>
 <br>
