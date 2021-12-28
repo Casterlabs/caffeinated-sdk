@@ -76,4 +76,6 @@ When the plugin loads, you will see a message in the console like this:
 <br>
 <br>
 <br>
-[Click here](/caffeinated-sdk/development/creating-a-widget) to continue to the next section, Creating a Widget.
+<span class="fs-8">
+	[Next, Creating a widget.](/caffeinated-sdk/development/creating-a-widget){: .btn .float-right }
+</span>
