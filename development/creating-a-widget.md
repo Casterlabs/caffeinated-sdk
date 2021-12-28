@@ -84,6 +84,6 @@ You may access the settings by calling `Widget#getSettings()` in your code. The 
 <br>
 <br>
 <br>
-<span class="fs-8">
+<span class="fs-3">
 	[Next, Creating the OBS source for the widget.](/caffeinated-sdk/development/creating-the-widget-source){: .btn .float-right }
 </span>

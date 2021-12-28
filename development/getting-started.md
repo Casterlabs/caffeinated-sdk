@@ -76,6 +76,6 @@ When the plugin loads, you will see a message in the console like this:
 <br>
 <br>
 <br>
-<span class="fs-8">
+<span class="fs-3">
 	[Next, Creating a widget.](/caffeinated-sdk/development/creating-a-widget){: .btn .float-right }
 </span>
