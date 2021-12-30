@@ -28,7 +28,7 @@ After creating a maven project, you should modify your `pom.xml` to include the 
 		</dependency>
 
 		<dependency>
-			<groupId>com.github.casterlabs.casterlabs-caffeinated.app-framework</groupId>
+			<groupId>com.github.casterlabs.casterlabs-caffeinated</groupId>
 			<artifactId>PluginSDK</artifactId>
 			<version>1.2.0</version>
 			<scope>compile</scope>
