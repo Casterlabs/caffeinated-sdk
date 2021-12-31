@@ -1,0 +1,13 @@
+# IntelliJ
+*.iml
+.idea/
+
+# Eclipse
+.metadata/
+.settings/
+.project
+.classpath
+
+# Common
+*target/
+Test.java

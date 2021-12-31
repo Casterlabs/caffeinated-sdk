@@ -20,6 +20,12 @@ After creating a maven project, you should modify your `pom.xml` to include the 
 	</repositories>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.22</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency> <!-- For Eclipse users -->
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
@@ -31,17 +37,17 @@ After creating a maven project, you should modify your `pom.xml` to include the 
 			<groupId>com.github.casterlabs.casterlabs-caffeinated</groupId>
 			<artifactId>PluginSDK</artifactId>
 			<version>1.2.0</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 ```
 
 ## Plugin Loading
 While the SDK may look similar to Bukkit, it is not the same.  
-Your plugin class will need to be annotated with `@PluginImplementation` to be found and loaded. (You can have multiple plugins in the same jar file)  
+Your plugin class will need to be annotated with `@CaffeinatedPluginImplementation` to be found and loaded. (You can have multiple plugins in the same jar file)  
 
 ```java
-@PluginImplementation
+@CaffeinatedPluginImplementation
 public class MyFirstPlugin extends CaffeinatedPlugin {
 
     @Override
@@ -66,12 +72,15 @@ public class MyFirstPlugin extends CaffeinatedPlugin {
 
 }
 ```
+
 As you can see, the plugin class extends `CaffeinatedPlugin` and implements `onInit()`, `onClose()`, `getName()`, and `getId()`.  
 `getName()` and `getId()` must return a name and unique id respectively, otherwise the plugin will fail to load.  
   
 When the plugin loads, you will see a message in the console like this:
 `[INFO  ] [My First Plugin] Hello World!`  
 
+To build your plugin jar, just run `mvn install` in the root of your project or use your IDEs built-in maven features.
+Place your jar into `%appdata%/casterlabs-caffeinated/plugins` for it to be loaded.
 
 <br>
 <br>

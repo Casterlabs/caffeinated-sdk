@@ -15,6 +15,8 @@ In your `onInit()` method you register a widget by calling `CaffeinatedPlugins#r
 ```java
 @Override
 public void onInit() {
+	this.getLogger().info("Hello World!");
+		
 	// Get the plugins context and register our widget.
     this.getPlugins().registerWidget(
 		this, 
@@ -25,8 +27,8 @@ public void onInit() {
 			 // https://feathericons.com/?query=anchor
 			.withIcon("anchor")
 
-			 // Categorize as a label.
-			.withCategory(WidgetDetailsCategory.LABELS)
+			 // Categorize as other.
+			.withCategory(WidgetDetailsCategory.OTHER)
 
 			// This is the name shown in the creation menu.
 			.withFriendlyName("My Custom Widget"), 
@@ -39,7 +41,12 @@ public class CustomWidget extends Widget {
 
     @Override
     public void onInit() {
-		FastLogger.logStatic("Hello World! I am: \"%s\"", this.getName());
+
+    }
+
+    @Override
+    public void onNameUpdate() { // This is always called when the widget is created.
+        FastLogger.logStatic("Hello World! I am: \"%s\"", this.getName());
     }
 
 }
@@ -63,7 +70,7 @@ this.setSettingsLayout(new WidgetSettingsLayout()
 		new WidgetSettingsSection("text_style", "Style")
 			// ... so are these
 			.addItem(WidgetSettingsItem.asFont("font", "Font", "Poppins"))
-			.addItem(WidgetSettingsItem.asNumber("font_size", "Font Size", 16, 1, 0, 128))
+			.addItem(WidgetSettingsItem.asNumber("font_size", "Font Size (px)", 16, 1, 0, 128))
 			.addItem(WidgetSettingsItem.asColor("text_color", "Text Color", "#ffffff"))
 	)
 );
@@ -71,7 +78,7 @@ this.setSettingsLayout(new WidgetSettingsLayout()
   
 This'll create a settings layout with a section called "Style" and three items:
  - Font
- - Font Size
+ - Font Size (px)
  - Text Color
   
 These are configured by the user, and will call `Widget#onSettingsUpdate()` (which you can implement) when they are changed.  
