@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 import co.casterlabs.caffeinated.pluginsdk.widgets.Widget;
 import co.casterlabs.caffeinated.pluginsdk.widgets.WidgetInstance;
+import co.casterlabs.caffeinated.pluginsdk.widgets.WidgetInstanceMode;
 import co.casterlabs.caffeinated.pluginsdk.widgets.settings.WidgetSettingsItem;
 import co.casterlabs.caffeinated.pluginsdk.widgets.settings.WidgetSettingsLayout;
 import co.casterlabs.caffeinated.pluginsdk.widgets.settings.WidgetSettingsSection;
@@ -42,24 +43,17 @@ public class CustomWidget extends Widget {
 
     @Override
     public void onNewInstance(@NonNull WidgetInstance instance) {
-        instance.on(
-            "message", (JsonElement e) -> {
-                // We just print the raw json.
-                FastLogger.logStatic("Received message from a widget instance: %s", e);
+        instance.on("message", (JsonElement e) -> {
+            // We just print the raw json.
+            FastLogger.logStatic("Received message from a widget instance: %s", e);
 
-                // instance.emit("mytype", mymessage);
-            }
-        );
+            // instance.emit("mytype", mymessage);
+        });
     }
 
-    @SneakyThrows
     @Override
-    public @Nullable String getWidgetHtml() {
-        // Read the source from the resources folder.
-        InputStream in = MyFirstPlugin.class.getResourceAsStream("/custom_widget.html");
-
-        // Return our html string.
-        return IOUtil.readInputStreamString(in, StandardCharsets.UTF_8);
+    public @NonNull String getWidgetBasePath(WidgetInstanceMode mode) {
+        return "/custom_widget.html";
     }
 
 }

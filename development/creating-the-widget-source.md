@@ -5,11 +5,13 @@ nav_order: 3
 ---
 
 # Creating the Widget Source
+
 {: .no_toc }
 
 There are two sides to creating a widget:
- 1) Widget Side (The .jar that runs in Caffeinated)
- 2) Stream Side (The .html that runs in OBS or is embedded elsewhere)
+
+1.  Widget Side (The .jar that runs in Caffeinated)
+2.  Stream Side (The .html that runs in OBS or is embedded elsewhere)
 
 ## Messaging
 
@@ -20,20 +22,18 @@ In our case, we just want to log some basic info for the purpose of demonstratin
 ```java
 @Override
 public void onNewInstance(@NonNull WidgetInstance instance) {
-    instance.on(
-        "message", (JsonElement e) -> {
-            // We just print the raw json.
-            FastLogger.logStatic("Received message from a widget instance: %s", e);
+    instance.on("message", (JsonElement e) -> {
+        // We just print the raw json.
+        FastLogger.logStatic("Received message from a widget instance: %s", e);
 
-            // instance.emit("mytype", mymessage);
-        }
-    );
+        // instance.emit("mytype", mymessage);
+    });
 }
 ```
 
 ## Initializing Stream Side
 
-We first need to load in our widget html, this is done by implementing `Widget#getWidgetHtml()` and returning our html string.
+We first need to load in our widget html, this is done by implementing `Widget#getWidgetBasePath()` and telling Caffeinated what resource it needs to load. Next, we implement `CaffeinatedPlugin#getResource()` and actually load the file from our Jar.
 
 ```java
 @SneakyThrows
@@ -47,68 +47,85 @@ public @Nullable String getWidgetHtml() {
 }
 ```
 
+```java
+@Override
+public @Nullable Pair<String, String> getResource(String resource) throws IOException {
+    // Figure out the mime tpye of the requested file.
+    String mimeType = "application/octet-stream";
+    String[] split = resource.split("\\.");
+    if (split.length > 1) {
+        mimeType = MimeTypes.getMimeForType(split[split.length - 1]);
+    }
+    // Read the file from our jar's resources. More advanced widgets can override
+    // this behavior to serve a modern "site" such as React or Vue or SvelteKit.
+    try (InputStream in = MyFirstPlugin.class.getClassLoader().getResourceAsStream(resource)) {
+        return new Pair<>(IOUtil.readInputStreamString(in, StandardCharsets.UTF_8), mimeType);
+    }
+}
+```
+
 Next, we need to make our widget html. The example provided just writes a simple chatlog on the screen (with some basic customization), but you can do anything you want.
 
 ```html
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Custom Widget</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
+  </head>
 
-    <head>
-        <meta charset="utf-8" />
-        <title>Custom Widget</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
-    </head>
+  <body>
+    <span id="chatlog"></span>
+  </body>
 
-    <body>
-        <span id="chatlog"></span>
-    </body>
+  <footer>
+    <script>
+      const chatLog = document.getElementById("chatlog");
+      let oldConfig = {};
 
-    <footer>
-        <script>
-            const chatLog = document.getElementById("chatlog");
-            let oldConfig = {};
+      // We use webfont loader because it's easy, that's it.
+      function changeFont(fontname) {
+        fontname = fontname || "Poppins";
 
-            // We use webfont loader because it's easy, that's it.
-            function changeFont(fontname) {
-                fontname = fontname || "Poppins";
+        document.documentElement.style = "font-family: '" + fontname + "';";
 
-                document.documentElement.style = "font-family: '" + fontname + "';";
+        WebFont.load({
+          google: {
+            families: [fontname],
+          },
+        });
+      }
 
-                WebFont.load({
-                    google: {
-                        families: [fontname]
-                    }
-                });
-            }
+      changeFont("Poppins");
 
-            changeFont("Poppins");
+      Widget.on("init", () => {
+        console.log("Init!");
 
-            Widget.on("init", () => {
-                console.log("Init!");
+        // Manually trigger an update
+        Widget.broadcast("update");
+      });
 
-                // Manually trigger an update
-                Widget.broadcast("update");
-            });
+      Widget.on("update", () => {
+        changeFont(Widget.getSetting("chat_style.font"));
+        chatDiv.style.color = Widget.getSetting("chat_style.text_color");
+        chatDiv.style.fontSize =
+          Widget.getSetting("chat_style.font_size") + "px";
+      });
 
-            Widget.on("update", () => {
-                changeFont(Widget.getSetting("chat_style.font"));
-                chatDiv.style.color = Widget.getSetting("chat_style.text_color");
-                chatDiv.style.fontSize = Widget.getSetting("chat_style.font_size") + "px";
-            });
+      // When we get chat messages we want to append them to the chat log.
+      Koi.on("chat", (event) => {
+        // escapeHtml is a helper function that escapes HTML characters. It's provided by the loader.
+        // Additionally, we replace all spaces with non-breaking spaces so they don't get broken up.
+        const html = `${event.sender.displayname} > ${escapeHtml(
+          event.message
+        ).replace(/ /g, "&nbsp;")}<br />`;
 
-            // When we get chat messages we want to append them to the chat log.
-            Koi.on("chat", (event) => {
-                // escapeHtml is a helper function that escapes HTML characters. It's provided by the loader.
-                // Additionally, we replace all spaces with non-breaking spaces so they don't get broken up.
-                const html = `${event.sender.displayname} > ${escapeHtml(event.message).replace(/ /g, "&nbsp;")}<br />`;
-
-                // Append it.
-                chatLog.innerHTML += html;
-            });
-
-        </script>
-    </footer>
-
+        // Append it.
+        chatLog.innerHTML += html;
+      });
+    </script>
+  </footer>
 </html>
 ```
 
