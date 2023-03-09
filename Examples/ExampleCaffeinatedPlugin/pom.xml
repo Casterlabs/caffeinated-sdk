@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>co.casterlabs.caffeinatedsdk.examples</groupId>
 	<artifactId>ExampleCaffeinatedPlugin</artifactId>
@@ -51,8 +52,8 @@
 		<dependency>
 			<groupId>co.casterlabs.Casterlabs</groupId>
 			<artifactId>PluginSDK</artifactId>
-			<!-- This is the current latest release, see https://github.com/Casterlabs/casterlabs/releases/latest -->
-			<version>840cff5</version>
+			<!-- This is the current latest release, see https://headwayapp.co/casterlabs-changelog for the latest commit -->
+			<version>0b32b021</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
