@@ -36,14 +36,9 @@ public void onNewInstance(@NonNull WidgetInstance instance) {
 We first need to load in our widget html, this is done by implementing `Widget#getWidgetBasePath()` and telling Caffeinated what resource it needs to load. Next, we implement `CaffeinatedPlugin#getResource()` and actually load the file from our Jar.
 
 ```java
-@SneakyThrows
 @Override
-public @Nullable String getWidgetHtml() {
-    // Read the source from the resources folder.
-    InputStream in = MyFirstPlugin.class.getResourceAsStream("/custom_widget.html");
-
-    // Return our html string.
-    return IOUtil.readInputStreamString(in, StandardCharsets.UTF_8);
+public @NonNull String getWidgetBasePath(WidgetInstanceMode mode) {
+    return "/chat";
 }
 ```
 
