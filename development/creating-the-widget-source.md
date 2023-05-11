@@ -131,3 +131,7 @@ After creatring a new instance of this widget and loading it into OBS (or just a
 ## Note about events
 
 Koi events and music events are already sent to the Stream Side, so you don't need to implement your own event system.
+
+## Note about frameworks
+
+Casterlabs places no restrictions on what can be loaded by your plugin, just keep in mind that if you use a framework you will need to set it's base path to `/$caffeinated-sdk-root$` otherwise the app will not know how to serve the contents (that string gets replaced on every loaded file). Example SvelteKit config [here](https://github.com/Casterlabs/Casterlabs/blob/dev/caffeinated/widgets/svelte.config.js).
