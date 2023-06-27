@@ -24,8 +24,8 @@ public void onInit() {
 		 	// Must be unique.
 			.withNamespace("com.example.custom_widget")
 
-			 // https://feathericons.com/?query=anchor
-			.withIcon("anchor")
+			 // Pick one from https://heroicons.com
+			.withIcon("rocket-launch")
 
 			 // Categorize as other.
 			.withCategory(WidgetDetailsCategory.OTHER)
