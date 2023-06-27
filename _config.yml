@@ -42,8 +42,12 @@ heading_anchors: true
 
 # Aux links for the upper right navigation
 aux_links:
-  "Casterlabs":
+  "Website":
     - "https://casterlabs.co"
+  "Discord":
+    - "https://casterlabs.co/discord"
+  "Guilded":
+    - "https://guilded.gg/casterlabs"
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: true
