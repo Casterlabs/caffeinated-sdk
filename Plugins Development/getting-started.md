@@ -40,7 +40,7 @@ After creating a maven project, you should modify your `pom.xml` to include the 
 			<groupId>co.casterlabs.Casterlabs</groupId>
 			<artifactId>PluginSDK</artifactId>
 			<!-- This is the current latest release, see https://headwayapp.co/casterlabs-changelog for the latest commit -->
-			<version>0b32b021</version>
+			<version>8383849</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
