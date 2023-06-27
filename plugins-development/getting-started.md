@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-parent: Development
+parent: Plugins Development
 nav_order: 1
 ---
 

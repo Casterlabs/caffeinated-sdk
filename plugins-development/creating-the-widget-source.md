@@ -1,6 +1,6 @@
 ---
 title: Creating the Widget Source
-parent: Development
+parent: Plugins Development
 nav_order: 3
 ---
 

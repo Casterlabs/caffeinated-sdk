@@ -1,6 +1,6 @@
 ---
 title: Creating a Widget
-parent: Development
+parent: Plugins Development
 nav_order: 2
 ---
 
