@@ -9,7 +9,7 @@ Caffeinated is a desktop app by Casterlabs for stream widgets, alerts, and more.
 <br>
 <br>
 <br>
-Looking to start on developing your own plugin? Go to the [Plugins Development/Getting Started](/caffeinated-sdk/plugins-development/getting-started) page.
+Looking to start on developing your own plugin? Go to the [Plugins Development/Getting Started](/caffeinated-sdk/Plugins%20Development/getting-started/) page.
 
 <!-- Pad out the page a bit -->
 <br>
