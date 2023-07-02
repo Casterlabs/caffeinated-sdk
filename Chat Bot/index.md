@@ -89,12 +89,12 @@ declare global {
     public upvoteChat( // Not supported by all platforms.
       platform: KoiPlatform, // Must be a signed in platform for this to succeed.
       messageId: string // The event ID.
-    );
+    ): void;
 
     public deleteChat( // Not supported by all platforms.
       platform: KoiPlatform, // Must be a signed in platform for this to succeed.
       messageId: string // The event ID.
-    );
+    ): void;
 
     history: KoiEvent[];
 
