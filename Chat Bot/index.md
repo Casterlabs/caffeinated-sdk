@@ -143,3 +143,15 @@ const PLATFORMS: KoiPlatform[]; // All enums.
 // https://github.com/Casterlabs/Casterlabs/blob/dev/caffeinated/app/Koi/src/main/java/co/casterlabs/koi/api/types/events/RichMessageEvent.java
 const event: KoiEvent;
 ```
+
+```typescript
+declare global {
+  interface ChatBotFetchAPI {
+    public asText(url: string): string;
+
+    public asJson(url: string): object;
+  }
+}
+
+const fetch: ChatBotFetchAPI;
+```
