@@ -90,5 +90,5 @@ Place your jar into `%appdata%/casterlabs-caffeinated/plugins` for it to be load
 <br>
 <br>
 <span class="fs-3">
-	[Next, Creating a widget.](/caffeinated-sdk/development/creating-a-widget){: .btn .float-right }
+	[Next, Creating a widget.](/caffeinated-sdk/Plugins%20Development/creating-a-widget){: .btn .float-right }
 </span>
