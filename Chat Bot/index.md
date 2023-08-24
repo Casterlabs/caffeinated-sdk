@@ -140,7 +140,7 @@ const Koi: ChatBotKoi;
 const PLATFORMS: KoiPlatform[]; // All enums.
 
 // The event that triggered this script. Always a KoiRichMessageEvent, which you can inspect the Java definition here:
-// https://github.com/Casterlabs/Casterlabs/blob/dev/caffeinated/app/Koi/src/main/java/co/casterlabs/koi/api/types/events/RichMessageEvent.java
+// https://github.com/Casterlabs/caffeinated/blob/dev/app/Koi/src/main/java/co/casterlabs/koi/api/types/events/RichMessageEvent.java
 const event: KoiEvent;
 ```
 
@@ -154,4 +154,14 @@ declare global {
 }
 
 const fetch: ChatBotFetchAPI;
+```
+
+```typescript
+declare global {
+  interface CaffeinatedPlugins {
+    public callServiceMethod(pluginId: string, serviceId: string, methodName: string, args: any[]): object;
+  }
+}
+
+const Plugins: CaffeinatedPlugins;
 ```
