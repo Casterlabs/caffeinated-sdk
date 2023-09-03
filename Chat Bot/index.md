@@ -14,8 +14,29 @@ Documentation for chatbot scripts.
 ## Types
 
 ```typescript
-// A list of arguments, so if someone runs "!example 123 abc" this will be ['123', 'abc'].
+// A list of arguments, so if someone runs "!example 123 abc" this will be ['123', 'abc']. Note that the args are only populated during a chat message, not during a Shout for Subscriptions, Follows, etc.
 const args: string[];
+
+// Exactly the same as above, but not as an pre-split array.
+const rawArgs: string;
+```
+
+```typescript
+declare global {
+  interface SoundApi {
+    /* Plays the specified audio url using the provided volume (must be 0-1) */
+    public playAudio(audioUrl: string, volume: number = 1): void;
+
+    /* Plays the specified text as a TTS message using the provided volume (must be 0-1) */
+    public playTTS(
+      audioUrl: string,
+      defaultVoice: string = "Brian",
+      volume: number = 1
+    ): void;
+  }
+}
+
+const Sound: SoundApi;
 ```
 
 ```typescript
@@ -139,8 +160,9 @@ const Koi: ChatBotKoi;
 
 const PLATFORMS: KoiPlatform[]; // All enums.
 
-// The event that triggered this script. Always a KoiRichMessageEvent, which you can inspect the Java definition here:
+// The event that triggered this script. Usually a KoiRichMessageEvent, which you can inspect the Java definition here:
 // https://github.com/Casterlabs/caffeinated/blob/dev/app/Koi/src/main/java/co/casterlabs/koi/api/types/events/RichMessageEvent.java
+// Take note that during Shouts, this will be a SubscriptionEvent, FollowEvent, etc.
 const event: KoiEvent;
 ```
 
@@ -159,7 +181,12 @@ const fetch: ChatBotFetchAPI;
 ```typescript
 declare global {
   interface CaffeinatedPlugins {
-    public callServiceMethod(pluginId: string, serviceId: string, methodName: string, args: any[]): object;
+    public callServiceMethod(
+      pluginId: string,
+      serviceId: string,
+      methodName: string,
+      args: any[]
+    ): object;
   }
 }
 
