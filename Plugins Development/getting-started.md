@@ -39,8 +39,7 @@ After creating a maven project, you should modify your `pom.xml` to include the 
 		<dependency>
 			<groupId>co.casterlabs</groupId>
 			<artifactId>PluginSDK</artifactId>
-			<!-- This is the current latest release, see https://github.com/Casterlabs/caffeinated/releases for the latest version -->
-			<version>1.2-1d5324c2-stable</version>
+			<version>1.2</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
